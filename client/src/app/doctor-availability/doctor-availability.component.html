@@ -1,1 +1,71 @@
-//todo: complete missing code..
+<div class="container mt-4">
+  <h2>Set Your Availability</h2>
+
+  <!-- Success Message -->
+  <div *ngIf="responseMessage" class="alert alert-success">
+    {{ responseMessage }}
+  </div>
+
+  <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="doctorId">DoctorId</label>
+      <input
+        type="number"
+        id="doctorId"
+        class="form-control"
+        formControlName="doctorId"
+        placeholder="Enter your doctorId"
+        [disabled]="true"
+      />
+      <div *ngIf="itemForm.controls['doctorId'].invalid && itemForm.controls['doctorId'].touched" class="text-danger">
+        <small *ngIf="itemForm.get('doctorId')?.errors?.['required']">
+          Please enter a valid DoctorId.
+        </small>
+        <small *ngIf="itemForm.get('doctorId')?.errors?.['min']">Should be a positive number</small>
+      </div>
+    </div>
+
+    <!-- Availability Field -->
+    <!-- <div class="form-group">
+      <label for="availability">Availability</label>
+      <input
+        type="text"
+        id="availability"
+        class="form-control"
+        formControlName="availability"
+        placeholder="Enter your availability"
+      />
+      <div *ngIf="itemForm.controls['availability'].invalid && itemForm.controls['availability'].touched" class="text-danger">
+        <small *ngIf="itemForm.get('availability')?.errors?.['required']">
+          Availability is required.
+        </small>
+      </div>
+    </div> -->
+
+
+
+  <div class="form-group mb-3">
+      <label for="availability">Availability</label>
+      <select id="availability" formControlName="availability" class="form-control"
+        [ngClass]="{ 'is-invalid': itemForm.get('availability')?.invalid && (itemForm.get('availability')?.dirty || itemForm.get('availability')?.touched) }">
+        <option value="" selected>Select availability</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+      <div
+        *ngIf="itemForm.get('availability')?.invalid && (itemForm.get('availability')?.dirty || itemForm.get('availability')?.touched)"
+        class="invalid-feedback">
+        Availability is required for doctors.
+      </div>
+    </div>
+
+
+
+
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary" [disabled]="itemForm.invalid">
+      Update Availability
+    </button>
+  </form>
+</div>

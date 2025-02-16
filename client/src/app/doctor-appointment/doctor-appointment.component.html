@@ -1,1 +1,146 @@
-//todo: complete missing code..
+<!-- <p style="background-color: rgb(82, 226, 175); text-align: center;">{{secondsMessage}}</p>
+<div *ngIf="doctorUserId && doctorUserName">
+    <p>Hi, <b>{{doctorUserName}}</b></p>
+    <p><b>Your Id is : {{doctorUserId}}</b></p>
+</div>
+
+
+<div class="container mt-4">
+    <h2>My Appointments</h2>
+  
+    
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th>Appointment ID</th>
+            <th>Date & Time</th>
+            <th>Patient Name</th>
+            <th>Patient Email</th>
+            <th>Status</th>
+          
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let appointment of appointmentList">
+            <td>{{ appointment.id }}</td>
+            <td>{{ appointment.appointmentTime | date:'short'}}</td>
+            <td>{{ appointment.patient.username }}</td>
+            <td>{{ appointment.patient.email }}</td>
+            <td>{{ appointment.status }}</td>
+           
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+
+    <ng-template #noAppointments>
+      <div class="alert alert-info">
+        You have no scheduled appointments.
+      </div>
+    </ng-template>
+</div> -->
+
+
+
+
+
+
+
+<!-- 
+
+<p *ngIf="secondsMessage" style="background-color: rgb(82, 226, 175); text-align: center;">{{ secondsMessage }}</p>
+
+<div *ngIf="doctorUserId && doctorUserName && !secondsMessage">
+  <p>Hi, <b>{{ doctorUserName }}</b></p>
+  <p><b>Your Id is : {{ doctorUserId }}</b></p>
+</div>
+
+<div class="container mt-4">
+
+  <div *ngIf="appointmentList.length === 0 && !secondsMessage" class="alert alert-info">
+    You have no scheduled appointments as of now.
+  </div>
+
+  <div *ngIf="appointmentList.length > 0 && !secondsMessage" class="table-responsive">
+    <h2>My Appointments</h2>
+    <table class="table table-striped table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th>Appointment ID</th>
+          <th>Date & Time</th>
+          <th>Patient Name</th>
+          <th>Patient Email</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let appointment of appointmentList">
+          <td>{{ appointment.id }}</td>
+          <td>{{ appointment.appointmentTime | date: 'short' }}</td>
+          <td>{{ appointment.patient.username }}</td>
+          <td>{{ appointment.patient.email }}</td>
+          <td>{{ appointment.status }}</td>
+          <button class="btn btn-primary">Mark As Done</button>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div> -->
+
+
+
+
+
+<p *ngIf="secondsMessage" style="background-color: rgb(82, 226, 175); text-align: center;">{{ secondsMessage }}</p>
+
+<div *ngIf="doctorUserId && doctorUserName && !secondsMessage">
+  <p>Hi, <b>{{ doctorUserName }}</b></p>
+  <p><b>Your Id is : {{ doctorUserId }}</b></p>
+</div>
+
+<div class="container mt-4">
+
+  <div *ngIf="appointmentList.length === 0 && !secondsMessage" class="alert alert-info">
+    You have no scheduled appointments as of now.
+  </div>
+
+  <div *ngIf="appointmentList.length > 0 && !secondsMessage" class="table-responsive">
+    <h2>My Appointments</h2>
+    <table class="table table-striped table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th>Appointment ID</th>
+          <th>Date & Time</th>
+          <th>Patient Name</th>
+          <th>Patient Email</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let appointment of appointmentList">
+          <td>{{ appointment.id }}</td>
+          <td>{{ appointment.appointmentTime | date: 'short':'Asia/Kolkata' }}</td>
+          <td>{{ appointment.patient.username }}</td>
+          <td>{{ appointment.patient.email }}</td>
+          <td [ngStyle]="{'color': appointment.status === 'Completed' ? 'green' : 'initial'}">
+            {{ appointment.status }}
+          </td>
+          <td>
+            <button 
+              class="btn" 
+              [ngClass]="appointment.status === 'Completed' ? 'btn-success' : 'btn-primary'" 
+              (click)="appointment.status = 'Completed'" 
+              [disabled]="appointment.status === 'Completed'"
+            >
+              {{ appointment.status === 'Completed' ? 'Completed' : 'Mark As Done' }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,3 +1,82 @@
-a{
-    cursor: pointer;
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    // justify-content: center;
+    // align-items:flex-start;
+}
+
+.video-container {
+    position: fixed;
+    top: 30px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.background-video {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    // backdrop-filter: blur(10px);
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.3); /* Semi-transparent background */
+    /* Backdrop filter for blur effect */
+    border: none;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: to add a subtle shadow */
+    width: 400px; /* Set a fixed width for the form */
+    height: 450px; /* Set a fixed height for the form */
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    // margin-left: 50px;
+    margin-right: 520px;
+    margin-bottom: 210px;
+    margin-left: 45px;
+    backdrop-filter: blur(10px);
+}
+
+h6{
+    color: white;
+}
+h4{
+    color: white;
+}
+
+.form-control {
+    background: rgba(255, 255, 255, 0.5); /* Semi-transparent input fields */
+    border: none;
+    color: rgb(255, 255, 255);
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
 }

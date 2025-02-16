@@ -10,16 +10,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class PatientAppointmentComponent implements OnInit {
   appointmentList:any=[];
   constructor(public httpService:HttpService) {
-  
    }
-
   ngOnInit(): void {
     this.getAppointments();
   }
-  getAppointments() {
+  getAppointments() 
+  {
     const userIdString = localStorage.getItem('userId');
-
-    // Parse userId to an integer, if it exists
     const userId = userIdString ? parseInt(userIdString, 10) : null;
     this.appointmentList
     this.httpService.getAppointmentByPatient(userId).subscribe((data)=>{

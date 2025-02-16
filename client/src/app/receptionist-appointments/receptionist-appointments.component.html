@@ -1,1 +1,98 @@
-//todo: complete missing code..
+<section class="section">
+  <img src="assets/4391.jpg" alt="Background Image" class="background-image">
+
+  <div class="container mt-5">
+    <h2 style="color: rgba(255, 255, 255, 0.919); text-align: center;">All Appointments</h2>
+
+    <div *ngIf="responseMessage" class="alert alert-success mt-4" role="alert">
+      {{ responseMessage }}
+    </div>
+
+    <div class="table-container">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="text-center">Appointment ID</th>
+            <th class="text-center">Doctor Availability</th>
+            <th class="text-center">Status</th>
+            <th class="text-center">Patient Details</th>
+            <th class="text-center">Doctor Details</th>
+            <th class="text-center">Specialty</th>
+            <th class="text-center">Time</th>
+            <th class="text-center" colspan="2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let appointment of storeappointment2$ | async">
+            <td class="text-center">{{ appointment.id }}</td>
+            <td class="text-center">{{ appointment.doctor.availability }}</td>
+            <td class="text-center">{{ appointment.status }}</td>
+            <td class="text-center">ID: {{ appointment.patient.id }}<br>
+              Name: {{ appointment.patient.username }}<br>
+              Email: {{ appointment.patient.email }}
+            </td>
+            <td class="text-center">ID: {{ appointment.doctor.id }}<br>
+              Name: {{ appointment.doctor.username }}<br>
+              Email: {{ appointment.doctor.email }}</td>
+            <td class="text-center">{{ appointment.doctor.specialty }}</td>
+            <td class="text-center">{{ appointment.appointmentTime | date: 'short':'Asia/Kolkata' }}</td>
+            <td class="text-center">
+              <button class="btn btn-primary" (click)="editAppointment(appointment)">Reschedule</button>
+            </td>
+            <td class="text-center">
+              <button class="btn btn-danger" (click)="deleteAppointment(appointment.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="isAdded" class="card mt-4">
+      <div class="card-header">
+        <h4>Edit Appointment</h4>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="patientId">Patient ID</label>
+            <input type="number" id="patientId" class="form-control" formControlName="patientId" [disabled]="true" />
+            <div *ngIf="itemForm.get('patientId')?.invalid && itemForm.get('patientId')?.touched" class="text-danger">
+              <small *ngIf="itemForm.get('patientId')?.hasError('required')">
+                Patient ID is required.
+              </small>
+              <small *ngIf="itemForm.get('patientId')?.hasError('min')">
+                Patient ID should not be negative.
+              </small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="doctorId">Doctor ID</label>
+            <input type="number" id="doctorId" class="form-control" formControlName="doctorId" [disabled]="true" />
+            <div *ngIf="itemForm.get('doctorId')?.invalid && itemForm.get('doctorId')?.touched" class="text-danger">
+              <small *ngIf="itemForm.get('doctorId')?.hasError('required')">
+                Doctor ID is required.
+              </small>
+              <small *ngIf="itemForm.get('doctorId')?.hasError('min')">
+                Doctor ID should not be negative.
+              </small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="time">Appointment Time</label>
+            <input type="datetime-local" id="time" class="form-control" formControlName="time" />
+            <div *ngIf="itemForm.get('time')?.invalid && itemForm.get('time')?.touched" class="text-danger">
+              <small *ngIf="itemForm.get('time')?.hasError('required')">
+                Appointment time is required.
+              </small>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-success">Update Appointment</button>
+          <button type="button" class="btn btn-secondary" (click)="isAdded = false">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

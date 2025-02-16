@@ -1,34 +1,37 @@
+<section class="section">
+  <img src="assets/4391.jpg" alt="Background Image" class="background-image">
 
-
-
-<div class="card mt-4">
-    <div class="card-header">
+  <div class="form-container">
+    <div class="card mt-4">
+      <div class="card-header">
         <h4>Appointments</h4>
-    </div>
-    <div class="card-body">
-        <table class="table table-boarderd">
-            <thead>
-                <th>Appointment Id</th>
-                <th>Appointment Time</th>
-                <th>Status</th>
-                <th>Doctor</th>
-                <th>Patient</th>
-               
-            </thead>
-            <tbody *ngFor="let val of appointmentList">
-                <tr >
-                    <td>{{val.id}}</td>
-                    <td>{{val.appointmentTime | date:'dd-MMM-yyyy hh:mm:a'}}</td>
-                    <td>{{val.status}}</td>
-                    <td><strong>{{val.doctor.username}}</strong><br>
-                        <small>{{val.doctor.email}}</small>
-                    </td>
-                    <td><strong>{{val.patient.username}}</strong><br>
-                        <small>{{val.patient.email}}</small>
-                    </td>
-                  
-                </tr>
-            </tbody>
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>APPOINTMENT ID</th>
+              <th>APPOINTMENT TIME</th>
+              <th>STATUS</th>
+              <th>DOCTOR DETAILS</th>
+              <th>PATIENT DETAILS</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let val of appointmentList">
+            <tr>
+              <td>{{val.id}}</td>
+              <td>{{val.appointmentTime | date:'dd-MMM-yyyy hh:mm:a' : 'UTC'}}</td>
+              <td>{{val.status}}</td>
+              <td><strong>{{val.doctor.username}}</strong><br>
+                <small>{{val.doctor.email}}</small>
+              </td>
+              <td><strong>{{val.patient.username}}</strong><br>
+                <small>{{val.patient.email}}</small>
+              </td>
+            </tr>
+          </tbody>
         </table>
+      </div>
     </div>
-</div>
+  </div>
+</section>

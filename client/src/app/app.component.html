@@ -1,1 +1,75 @@
-//todo: complete missing code..
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <span class="container-fluid">
+      <a class="navbar-brand" routerLink="/ui">EAZYDOC</a>
+ 
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarNav" aria-controls="navbarNav"
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+ 
+      <!-- Navigation Links for Logged-in Users -->
+      <span class="collapse navbar-collapse" id="navbarNav" *ngIf="isLoggedIn">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+ 
+          <!-- Common Links -->
+          <li class="nav-item">
+            <a class="navbar-brand" routerLink="/dashboard">Dashboard</a>
+          </li>
+ 
+          <!-- Links for Patients -->
+          <li class="nav-item" *ngIf="roleName === 'PATIENT'">
+            <a class="navbar-brand" routerLink="/patient-appointment">My Appointments</a>
+          </li>
+          <li class="nav-item" *ngIf="roleName === 'PATIENT'">
+            <a class="navbar-brand" routerLink="/schedule-appointment">Schedule Appointment</a>
+          </li>
+ 
+          <!-- Links for Doctors -->
+          <li class="nav-item" *ngIf="roleName === 'DOCTOR'">
+            <a class="navbar-brand" routerLink="/doctor-appointment">Appointments</a>
+          </li>
+          <li class="nav-item" *ngIf="roleName === 'DOCTOR'">
+            <a class="navbar-brand" routerLink="/doctor-availability">Set Availability</a>
+          </li>
+ 
+          <!-- Links for Receptionists -->
+          <li class="nav-item" *ngIf="roleName === 'RECEPTIONIST'">
+            <a class="navbar-brand" routerLink="/receptionist-appointments">Manage Appointments</a>
+          </li>
+          <li class="nav-item" *ngIf="roleName === 'RECEPTIONIST'">
+            <a class="navbar-brand" routerLink="/receptionist-schedule-appointments">Schedule Appointment</a>
+          </li>
+ 
+          <!-- Add more role-based links here -->
+ 
+        </ul>
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <!-- Logout Link -->
+          <li class="nav-item">
+            <a class="navbar-brand" style="cursor: pointer;" (click)="logout()">Logout</a>
+          </li>
+        </ul>
+      </span>
+ 
+      <!-- Links for Guests (Not Logged-in Users) -->
+      <span *ngIf="!isLoggedIn" class="d-flex">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <!-- Login Link -->
+          <li class="nav-item">
+            <a class="navbar-brand" routerLink="/login">Login</a>
+          </li>
+          <!-- Registration Link -->
+          <li class="nav-item">
+            <a class="navbar-brand" routerLink="/registration">Register</a>
+          </li>
+        </ul>
+      </span>
+ 
+    </span>
+  </nav>
+ 
+  <!-- Main Content -->
+  <span class="container mt-4">
+    <router-outlet></router-outlet>
+  </span>

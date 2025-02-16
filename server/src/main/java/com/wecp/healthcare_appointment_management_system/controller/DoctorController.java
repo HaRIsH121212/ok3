@@ -13,17 +13,33 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-
+@RestController
 public class DoctorController {
 
+    @Autowired
+    private AppointmentService appointmentService;
+
+    @Autowired
+    private DoctorService doctorService;
 
     @GetMapping("/api/doctor/appointments")
     public ResponseEntity<List<Appointment>> viewAppointments(@RequestParam Long doctorId) {
-        // view appointments
+        List<Appointment> appointments = appointmentService.getAppointmentsByDoctorId(doctorId);
+        return ResponseEntity.ok(appointments);
     }
 
     @PostMapping("/api/doctor/availability")
     public ResponseEntity<Doctor> manageAvailability(@RequestParam Long doctorId, @RequestParam String availability) {
-        // manage availablity
+        Doctor updatedDoctor = doctorService.updateAvailability(doctorId, availability);
+        return ResponseEntity.ok(updatedDoctor);
     }
+    
+
+
+ @GetMapping("/api/doctors")
+    public ResponseEntity<List<Doctor>> getAllDoctors() {
+        List<Doctor> doctors = doctorService.getAllDoctors();
+        return ResponseEntity.ok(doctors);
+    }
+
 }

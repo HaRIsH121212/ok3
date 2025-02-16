@@ -1,15 +1,49 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HttpService } from '../../services/http.service';
-import { DatePipe } from '@angular/common';
+<section class="section">
+  <img src="assets/4391.jpg" alt="Background Image" class="background-image">
 
-@Component({
-  selector: 'app-receptionist-schedule-appointments',
-  templateUrl: './receptionist-schedule-appointments.component.html',
-  styleUrls: ['./receptionist-schedule-appointments.component.scss'],
-  providers: [DatePipe] 
-  
-})
-export class ReceptionistScheduleAppointmentsComponent 
+  <div class="form-container">
+    <div class="card mt-4">
+      <div class="card-header">
+        <h4>Appointments</h4>
+      </div>
+      <div class="card-body">
+        <table class="table table-striped table-bordered">
+          <thead class="thead-dark">
+            <tr>
+              <th>DoctorId</th>
+              <th>DoctorName</th>
+              <th>Specialty</th>
+              <th>Availability</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let d of doctorList">
+              <td>{{d.id}}</td>
+              <td>{{d.username}}</td>
+              <td>{{d.specialty}}</td>
+              <td>{{d.availability}}</td>
+              <td><button class="btn btn-primary" (click)="addAppointment(d)">Book Appointment</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 
-//todo: complete missing code..
+  <div *ngIf="isAdded" class="mt-4">
+    <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="time">Select Time:</label>
+        <input type="datetime-local" formControlName="time" class="form-control">
+        <div *ngIf="itemForm.get('time')?.invalid && itemForm.get('time')?.touched" class="text-danger">
+          <small *ngIf="itemForm.get('time')?.hasError('required')">
+            Time is required.
+          </small>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success">Schedule Appointment</button>
+      <button type="button" class="btn btn-danger" (click)="cancelAppointment()">Cancel</button>
+    </form>
+  </div>
+</section>

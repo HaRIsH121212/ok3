@@ -1,0 +1,138 @@
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  // margin-bottom: 10px;
+  // color: turquoise;
+}
+
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.content {
+  text-align: center;
+  color: white;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.content h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  // color: turquoise;
+}
+
+.content p {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+}
+
+.btn-primary, .btn-secondary {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.footer {
+  background: rgba(0, 60, 72, 0.9); /* Dark transparent background */
+  color: #fff;
+  padding: 40px 0;
+
+  .container {
+    .row {
+      .col-md-4 {
+        margin-bottom: 20px;
+
+        h4 {
+          font-size: 18px;
+          margin-bottom: 20px;
+          font-weight: bold;
+        }
+
+        p, ul {
+          font-size: 14px;
+        }
+
+        ul {
+          padding: 0;
+          list-style: none;
+
+          li {
+            margin-bottom: 10px;
+
+            i {
+              margin-right: 10px;
+            }
+          }
+        }
+
+        .social-media {
+          .list-inline-item {
+            margin-right: 10px;
+
+            a {
+              color: #fff;
+              font-size: 20px;
+
+              &:hover {
+                color: #17a2b8; /* Change color on hover */
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .row.mt-4 {
+      .col {
+        text-align: center;
+        font-size: 14px;
+      }
+    }
+  }
+}
