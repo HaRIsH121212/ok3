@@ -27,12 +27,15 @@ body, html {
     width: 100%;
 }
 
-.container {
+h4 {
+    color: black;
+}
+
+.form-container {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 70%; // Ensure the container takes up 70% of the width, leaving 15% on each side
+    width: 70%; // Ensure the form takes up 70% of the width, leaving 15% on each side
     height: 85vh; // Ensure the container takes up 85% of the height, leaving 15% from the top
     margin-top: 15vh; // Add 15% space from the top
 }
@@ -44,16 +47,27 @@ body, html {
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Optional: to add a subtle shadow
-    width: 100%; // Ensure the card takes up the full width within the container
+    width: 100%; // Ensure the card takes up the full width within the form-container
+    margin-top: 200px;
 }
 
 .card-header, .card-body {
     color: white;
-    text-align: center;
+    // text-align: center;
+}
+h2{
+    color: black;
 }
 
 .table-container {
     width: 100%; // Ensure the table container takes up the full width within the card
+    margin-bottom: 220px;
+    border-radius: 10px;
+
+
+background: rgba(255, 255, 255, 0.3);     backdrop-filter: blur(10px);    border: none;    border-radius: 10px;    padding: 20px;    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);     width: 100%;    
+
+    
 }
 
 .table {

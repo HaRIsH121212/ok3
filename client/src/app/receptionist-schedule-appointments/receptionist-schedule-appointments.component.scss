@@ -27,29 +27,36 @@ body, html {
     width: 100%;
 }
 
-.container {
+h4 {
+    color: black;
+}
+
+.form-container {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 70%; // Ensure the container takes up 70% of the width, leaving 15% on each side
+    width: 70%; // Ensure the form takes up 70% of the width, leaving 15% on each side
     height: 85vh; // Ensure the container takes up 85% of the height, leaving 15% from the top
     margin-top: 15vh; // Add 15% space from the top
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.3); // Semi-transparent background
-    backdrop-filter: blur(10px); // Backdrop filter for blur effect
+    background: rgba(255, 255, 255, 0.3); 
+    backdrop-filter: blur(10px);
     border: none;
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Optional: to add a subtle shadow
-    width: 100%; // Ensure the card takes up the full width within the container
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    width: 100%;
+    margin-top: 200px;
 }
 
 .card-header, .card-body {
     color: white;
-    text-align: center;
+    // text-align: center;
+}
+h4{
+    color: white;
 }
 
 .table-container {

@@ -16,7 +16,7 @@
       <div class="card-body">
         <form class="mb-3 mt-md-4" [formGroup]="itemForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
-            <label for="patientId">Patient ID</label>
+            <label for="patientId"><b>Patient ID</b></label>
             <input type="number" id="patientId" class="form-control" formControlName="patientId" placeholder="Enter Patient Id here"/>
             <div *ngIf="itemForm.get('patientId')?.invalid && itemForm.get('patientId')?.touched" class="text-danger">
               <small *ngIf="itemForm.get('patientId')?.hasError('required')">Patient ID is required.</small>
@@ -25,7 +25,7 @@
           </div>
 
           <div class="form-group">
-            <label for="doctorId">Doctor ID</label>
+            <label for="doctorId"><b>Doctor ID</b></label>
             <input type="number" id="doctorId" class="form-control" formControlName="doctorId" placeholder="Enter Doctor Id here"/>
             <div *ngIf="itemForm.get('doctorId')?.invalid && itemForm.get('doctorId')?.touched" class="text-danger">
               <small *ngIf="itemForm.get('doctorId')?.hasError('required')">Doctor ID is required.</small>
@@ -34,7 +34,7 @@
           </div>
 
           <div class="mb-3">
-            <label for="time">Enter Date and Time</label>
+            <label for="time"><b>Enter Date and Time</b></label>
             <input type="datetime-local" name="time" formControlName="time" [(ngModel)]="formModel.time" class="form-control" id="time" placeholder="Appointment Time">
             <div *ngIf="itemForm.controls['time'].invalid && (itemForm.controls['time'].dirty || itemForm.controls['time'].touched)" class="ng-dirty">
               <span *ngIf="itemForm.controls['time'].errors">
@@ -52,17 +52,17 @@
 
     <!-- Doctors Search Input -->
     <div class="mt-4">
-      <h4 style="color: white;text-align: center;"><b>All Doctors</b></h4>
+      <h4 style="color: white;text-align: center;"><b>ALL DOCTORS</b></h4>
       <input type="text" class="form-control mb-2" placeholder="Search by Doctor ID, Name, or Specialty" (input)="searchDoctor($event)" />
       <div class="table-container">
         <table class="table table-striped">
           <thead>
             <tr>
               <th class="text-center">ID</th>
-              <th class="text-center">Name</th>
-              <th class="text-center">Email</th>
-              <th class="text-center">Specialty</th>
-              <th class="text-center">Availability</th>
+              <th class="text-center">NAME</th>
+              <th class="text-center">EMAIL</th>
+              <th class="text-center">SPECIALITY</th>
+              <th class="text-center">AVAILABILITY</th>
             </tr>
           </thead>
           <tbody>
@@ -79,15 +79,15 @@
 
     <!-- Patients Search Input -->
     <div class="mt-5">
-      <h4 style="color: white;text-align: center;"><b>All Patients</b></h4>
+      <h4 style="color: white;text-align: center;"><b>ALL PATIENTS</b></h4>
       <input type="text" class="form-control mb-2" placeholder="Search by Patient ID or Name" (input)="searchPatient($event)" />
       <div class="table-container">
         <table class="table table-striped">
           <thead>
             <tr>
               <th class="text-center">ID</th>
-              <th class="text-center">Name</th>
-              <th class="text-center">Email</th>
+              <th class="text-center">NAME</th>
+              <th class="text-center">EMAIL</th>
             </tr>
           </thead>
           <tbody>
